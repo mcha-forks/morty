@@ -7,3 +7,6 @@ build:
 run:
 	@echo "\n /!\ DO NOT use in production\n"
 	docker run --rm -t -i --net=host --name="morty" $(APP_NAME)
+
+push: build
+	docker push $(APP_NAME)
