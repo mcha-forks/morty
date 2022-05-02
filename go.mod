@@ -4,7 +4,7 @@ go 1.14
 
 require (
 	github.com/klauspost/compress v1.15.1 // indirect
-	github.com/valyala/fasthttp v1.35.0
+	github.com/valyala/fasthttp v1.36.0
 	golang.org/x/net v0.0.0-20220421235706-1d1ef9303861
 	golang.org/x/text v0.3.7
 )
