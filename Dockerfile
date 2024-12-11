@@ -1,5 +1,5 @@
 # STEP 1: get ca-certificates and an user
-FROM alpine as alpine
+FROM alpine:latest as alpine
 RUN apk --no-cache add ca-certificates \
     && adduser -D -h /usr/local/morty -s /bin/false -u 10001 morty morty
 
@@ -8,13 +8,7 @@ FROM golang:1.22-alpine as builder
 
 WORKDIR $GOPATH/src/github.com/asciimoo/morty
 
-RUN apk add --no-cache git
-
 COPY . .
-RUN go get -d -v
-RUN gofmt -l ./
-#RUN go vet -v ./...
-#RUN go test -v ./...
 RUN CGO_ENABLED=0 go build -ldflags '-extldflags "-static"' -tags timetzdata .
 
 # STEP 3: build the image from scratch
